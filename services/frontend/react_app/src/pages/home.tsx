@@ -143,7 +143,7 @@ export const HomePage = () => {
                     <Card border={12} maxW={600}>
                         <CardHeader>
                             <Heading size='lg' textAlign='left'>
-                                Go anywhere with HotROD
+                                Go anywhere with HotROD HELLOOOOO!!!
                             </Heading>
                             <Heading size='xs' textAlign='left'>
                                 Request a ride, hop in, and go.
