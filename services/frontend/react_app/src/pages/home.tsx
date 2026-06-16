@@ -142,8 +142,8 @@ export const HomePage = () => {
                 <Stack flexGrow={1} w='50%'>
                     <Card border={12} maxW={600}>
                         <CardHeader>
-                            <Heading size='lg' textAlign='left'>
-                                Go anywhere with HotROD
+                            <Heading size='xl' textAlign='left'>
+                                Go anywhere with HotROD HELLOOOO!!!
                             </Heading>
                             <Heading size='xs' textAlign='left'>
                                 Request a ride, hop in, and go.
