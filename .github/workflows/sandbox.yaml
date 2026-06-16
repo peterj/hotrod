@@ -1,0 +1,27 @@
+name: sandbox-per-pr
+on:
+  pull_request:
+
+env:
+  SIGNADOT_ORG: learncloud
+  SIGNADOT_API_KEY: ${{ secrets.SIGNADOT_API_KEY }}
+
+jobs:
+  create-sandbox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install signadot CLI
+        run: curl -sSLf https://raw.githubusercontent.com/signadot/cli/main/scripts/install.sh | sh
+
+      - name: Create / update sandbox
+        run: |
+          SHORT_SHA=$(echo "${{ github.event.pull_request.head.sha }}" | cut -c1-6)
+          signadot sandbox apply \
+            --set name=route-pr-${SHORT_SHA} \
+            --set service=route \
+            --set namespace=hotrod \
+            --set image=signadot/hotrod:latest \
+            --set github-pr=${{ github.event.pull_request.number }} \
+            --set branch=${{ github.head_ref }} \
+            -f - < .signadot/sbx-gh-template.yaml
