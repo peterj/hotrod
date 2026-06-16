@@ -48,6 +48,6 @@ func (c *Client) FindRoute(ctx context.Context, from, to string) (*Route, error)
 		return nil, err
 	}
 	return &Route{
-		ETA: time.Duration(response.EtaSeconds) * time.Second,
+		ETA: time.Duration(response.EtaSeconds) * time.Millisecond,
 	}, nil
 }
